@@ -15,6 +15,19 @@ gem "dartsass-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# For authentication
+gem "devise"
+
+# For search and filter functionality
+gem "ransack"
+
+# For pagination
+gem "pagy"
+
+# For email testing
+gem "letter_opener", group: :development
+gem "letter_opener_web", group: :development
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 

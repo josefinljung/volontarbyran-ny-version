@@ -1,0 +1,23 @@
+sv:
+  helpers:
+    label:
+      tasks:
+        title: "Titel på uppdrag"
+        company: "Företag"
+        city: "Ort"
+        description: "Beskrivning"
+  tasks:
+    edit:
+      back_link: "Tillbaka till alla uppdrag"
+      page_title: "Redigera uppdrag"
+      heading: "Redigera uppdrag"
+      show_link: "Visa uppdrag"
+    show:
+      back_link: "Tillbaka till alla uppdrag"
+      destroy_link: "Ta bort uppdrag"
+      edit_link: "Uppdatera uppdrag"
+    index:
+      title: "Alla uppdrag"
+      heading: "Alla uppdrag"
+      show_link: "Visa uppdrag"
+      new_task: "Skapa nytt uppdrag"

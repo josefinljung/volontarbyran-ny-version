@@ -1,9 +1,8 @@
 # config/routes.rb
 
 Rails.application.routes.draw do
-  resources :tasks
-  scope "(:locale)" do
-    resources :items # <-- Ligger kvar från din förra iteration
+  scope "(:locale)", locale: /en|sv/ do
+    resources :tasks
 
     devise_for :users
 

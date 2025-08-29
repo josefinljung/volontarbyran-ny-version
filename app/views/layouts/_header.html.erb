@@ -6,4 +6,10 @@
     <%= link_to "Logga in", new_user_session_path %>
     <%= link_to "Registrera dig", new_user_registration_path %>
   <% end %>
+
+  <%= link_to "Alla uppdrag", tasks_path %>
+
+  <% if user_signed_in? %>
+    <%= link_to "Lägg till nytt uppdrag", new_task_path %>
+  <% end %>
 </header>

@@ -15,6 +15,9 @@ gem "dartsass-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# handling of frontend assets (css, js, images)
+gem "vite_rails"
+
 # For authentication
 gem "devise"
 

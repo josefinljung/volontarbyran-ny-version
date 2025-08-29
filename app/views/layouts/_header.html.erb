@@ -1,0 +1,9 @@
+<header>
+  <% if user_signed_in? %>
+    <p>Inloggad som: <%= current_user.email %></p>
+    <%= button_to "Logga ut", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Logga in", new_user_session_path %>
+    <%= link_to "Registrera dig", new_user_registration_path %>
+  <% end %>
+</header>

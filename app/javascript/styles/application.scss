@@ -11,51 +11,64 @@ body {
   }
 
   header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2.5rem;
     padding: 1.5rem 3rem;
 
-    #logo-menu-container {
+    .header-inner-wrapper {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
-      gap: 1.5rem 6rem;
-
-      #header-logo {
-        height: 1.5rem;
-      }
-    }
-
-    #header-menu {
-      display: flex;
-      flex-direction: row;
       flex-wrap: wrap;
       gap: 2.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
 
-    .header-cta-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
+      #logo-menu-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.5rem 6rem;
 
-    #login-icon-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 2.5rem;
-      min-width: 2.5rem;
-      background-color: $secondary-color;
-      color: white;
+        #header-logo {
+          height: 1.5rem;
+        }
+      }
+
+      #header-menu {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header-cta-container-wrapper {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+
+        .header-cta-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 1.5rem;
+        }
+
+        #login-icon-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 2.5rem;
+          min-width: 2.5rem;
+          background-color: $secondary-color;
+          color: white;
+        }
+      }
+      .logged-in-user-email {
+        width: max-content;
+        margin-left: auto;
+      }
     }
   }
 
@@ -302,6 +315,12 @@ body {
     }
   }
 
+  .success-message {
+    font-size: 20px;
+    color: green;
+    padding: 1rem;
+  }
+
   .delete-svg,
   .edit-svg {
     width: 1.5rem;
@@ -340,18 +359,22 @@ body {
   }
 
   .cta-vertical-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-
-  .cta-horizontal-wrapper {
     display: grid;
     justify-content: center;
     justify-items: center;
     align-items: center;
     gap: 1.5rem;
+  }
+
+  .cta-horizontal-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .task-wrapper {
+    background-color: white;
+    margin-bottom: 1rem;
   }
 }

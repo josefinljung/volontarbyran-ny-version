@@ -1,4 +1,4 @@
-<div id="<%= dom_id task %>" class="primary-background container">
+<div id="<%= dom_id task %>" class="container task-wrapper">
   <p>
     <strong><%= t("tasks.task.title") %>:</strong>
     <%= task.title %>
@@ -21,6 +21,6 @@
 
   <p>
     <strong><%= t("tasks.task.created_by") %>:</strong>
-    <%= task.user_id %>
+    <%= task.user.email %>
   </p>
 </div>

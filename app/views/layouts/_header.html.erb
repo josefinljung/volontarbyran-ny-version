@@ -1,53 +1,62 @@
-  <header>
+<header>
+  <div class="header-inner-wrapper">
 
-    <div id="logo-menu-container">
-       <%= link_to root_path do %>
-            <img id="header-logo" src="/logo-black.svg" alt="Volontärbyrån logo" />
-        <% end %>
+      <div id="logo-menu-container">
+        <%= link_to root_path do %>
+              <img id="header-logo" src="/logo-black.svg" alt="Volontärbyrån logo" />
+          <% end %>
 
-        <ul id="header-menu">
-        <li>
-            <%= link_to "För volontärer", root_path %>
-        </li>
-        <li>
-            <%= link_to "För organisationer", root_path %>
-        </li>
-        <li>
-            <%= link_to "Alla uppdrag", tasks_path %>
-        </li>
-        <li>
-            <%= link_to "Om oss", root_path %>
-        </li>
-        </ul>
-    </div>
+          <ul id="header-menu">
+          <li>
+              <%= link_to "För volontärer", root_path %>
+          </li>
+          <li>
+              <%= link_to "För organisationer", root_path %>
+          </li>
+          <li>
+              <%= link_to "Alla uppdrag", tasks_path %>
+          </li>
+          <li>
+              <%= link_to "Om oss", root_path %>
+          </li>
+          </ul>
+      </div>
 
-    <div class="header-cta-container">
-      <% if user_signed_in? %>
-        <%= link_to "Skapa uppdrag", new_task_path, class: "primary-cta" %>
-
-        <%= button_to "Logga ut", destroy_user_session_path, method: :delete, class: "primary-cta" %>
-      <% else %>
-      
+      <div class="header-cta-container-wrapper">
       <div class="header-cta-container">
-        <%= link_to "Skapa konto", new_user_registration_path, class: "primary-cta" %>
+        <% if user_signed_in? %>
+          <%= link_to "Skapa uppdrag", new_task_path, class: "primary-cta" %>
+          
+          <%= button_to "Logga ut", destroy_user_session_path, method: :delete, class: "primary-cta" %>
+        <% else %>
         
-        <%= link_to new_user_session_path, class: "primary-cta" do %>
-          <span>logga in </span>
+        <div class="cta-horizontal-wrapper">
+          <%= link_to "Skapa konto", new_user_registration_path, class: "primary-cta" %>
+          
+          <%= link_to new_user_session_path, class: "primary-cta" do %>
+            <span>logga in </span>
+          <% end %>
+
+          <!-- show icon only on small screens
+          -->
+          <%= link_to new_user_session_path, class: "primary-cta" do %>
+            <img id="user-logo" width="24" height="24" src="/user-icon.svg" alt="Logga in" />
+          <% end %>
+
+          <icon "home">
+
+
+          </div>
         <% end %>
-
-        <!-- show icon only on small screens
-        -->
-        <%= link_to new_user_session_path, class: "primary-cta" do %>
-          <img id="user-logo" width="24" height="24" src="/user-icon.svg" alt="Logga in" />
-        <% end %>
-
-        <icon "home">
-
-
-        </div>
-      <% end %>
-        
-    </div>    
-    
-  
-  </header>
+          
+      
+        </div>    
+        <% if user_signed_in? %>
+            <p class="logged-in-user-email">
+              <%= t("header.logged_in_as", email: current_user.email) %>
+            </p>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</header>

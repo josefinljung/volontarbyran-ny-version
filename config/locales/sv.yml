@@ -1,4 +1,6 @@
 sv:
+  header:
+    logged_in_as: "Inloggad som: %{email}"
   helpers:
     submit:
       update: "Uppdatera uppdrag"
@@ -38,11 +40,11 @@ sv:
       description: "Beskrivning"
       created_by: "Skapad av"
     create:
-      success: "Uppdraget skapades"
+      success: "Uppdraget skapades!"
     update:
-      success: "Uppdraget uppdaterades"
+      success: "Uppdraget uppdaterades!"
     destroy:
-      success: "Uppdraget togs bort"
+      success: "Uppdraget togs bort."
   activerecord:
     attributes:
       task:

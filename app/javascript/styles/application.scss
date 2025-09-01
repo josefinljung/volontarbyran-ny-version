@@ -423,5 +423,9 @@ body {
       height: 1rem;
       background-color: $quaternary-color;
     }
+
+    a[aria-disabled="true"]:not(.current) {
+      display: none;
+    }
   }
 }

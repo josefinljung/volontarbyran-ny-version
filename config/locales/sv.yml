@@ -39,6 +39,7 @@ sv:
       city: "Ort"
       description: "Beskrivning"
       created_by: "Skapad av"
+      read_more: "Läs mer"
     create:
       success: "Uppdraget skapades!"
     update:

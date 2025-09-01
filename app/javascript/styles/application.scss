@@ -179,6 +179,18 @@ body {
             cursor: pointer;
           }
         }
+
+        .read-more-link {
+          font-weight: bold;
+          color: $secondary-color;
+          width: fit-content;
+
+          &:hover {
+            color: $secondary-color-light;
+            text-decoration: underline;
+            text-underline-offset: 0.2rem;
+          }
+        }
       }
     }
   }

@@ -15,7 +15,6 @@
             <h2 class="task-title"><%= task.title %></h2> 
           </div>
           
-          
           <div>
             <p class="task-city">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="inherit" style="flex-shrink:0">
@@ -50,6 +49,7 @@
                 </div>    
               <% end %>
           </div>
+          <%= link_to t("tasks.task.read_more"), task_path(task), class: "read-more-link" %>
         </div>
       <% end %>
     </div>

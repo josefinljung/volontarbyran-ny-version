@@ -1,12 +1,25 @@
-<% content_for :title, t("tasks.edit.page_title") %>
+<div class="primary-background container">
+  <% content_for :title, t("tasks.edit.page_title") %>
+  <h1 class="secondary-heading"><%= t("tasks.edit.heading") %></h1>
 
-<h1><%= t("tasks.edit.heading") %></h1>
+  <%= form_with(model: @task) do |form| %>
+    <div>
+      <%= form.label :title, "Uppdragets titel" %>
+      <%= form.text_field :title %>
+    </div>
+    <div>
+      <%= form.label :company, "Företag" %>
+      <%= form.text_field :company %>
+    </div>
+    <div>
+      <%= form.label :city, "Stad" %>
+      <%= form.text_field :city %>
+    </div>
+    
+    <div class="cta-horizontal-wrapper">
+      <%= form.submit "Uppdatera uppdrag", class: "primary-cta"%>
+      <%= link_to t("tasks.edit.back_link"), tasks_path, class: "primary-cta" %>
+    </div>
+  <% end %>
 
-<%= render "form", task: @task %>
-
-<br>
-
-<div>
-  <%= link_to t("tasks.edit.show_link"), @task %> |
-  <%= link_to t("tasks.edit.back_link"), tasks_path %>
 </div>

@@ -18,15 +18,19 @@ sv:
       back_link: "Tillbaka till alla uppdrag"
       page_title: "Nytt uppdrag"
       heading: "Nytt uppdrag"
+      new_task: "Skapa nytt uppdrag"
     show:
       back_link: "Tillbaka till alla uppdrag"
       destroy_link: "Ta bort uppdrag"
       edit_link: "Uppdatera uppdrag"
     index:
       page_title: "Alla uppdrag"
-      heading: "Alla uppdrag"
       show_link: "Visa uppdrag"
       new_task: "Skapa nytt uppdrag"
+      created_by: "Uppdrag skapat av: %{email}"
+      heading:
+        one: "Ett uppdrag"
+        other: "%{count} uppdrag"
     task:
       title: "Titel"
       company: "Företag"

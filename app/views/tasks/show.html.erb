@@ -1,11 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div class="primary-background container">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @task %>
+  <%= render @task %>
 
-<div>
-  
-  <%= link_to t("tasks.show.edit_link"), edit_task_path(@task) %> |
-  <%= link_to t("tasks.show.back_link"), tasks_path %>
-
-  <%= button_to t("tasks.show.destroy_link"), @task, method: :delete %>
+  <div class="cta-horizontal-wrapper">
+    <div class="cta-vertical-wrapper">
+      <%= link_to t("tasks.show.edit_link"), edit_task_path(@task), class: "primary-cta" %>
+      <%= button_to t("tasks.show.destroy_link"), @task, method: :delete, class: "primary-cta" %>
+      </div>
+      
+      <%= link_to t("tasks.show.back_link"), tasks_path, class: "primary-cta" %>
+  </div>
 </div>

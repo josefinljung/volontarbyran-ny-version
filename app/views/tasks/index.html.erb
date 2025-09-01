@@ -1,18 +1,61 @@
-<p style="color: green"><%= notice %></p>
 
 <% content_for :title, "#{ApplicationHelper::BRAND_NAME} | #{t('tasks.index.page_title')}" %>
 
-<h1><%= t("tasks.index.heading") %></h1>
+<div class="primary-background container">
 
-<div id="tasks">
-<% @tasks.each do |task| %>
-  <%= render task %>
-  <p>
-  <p>Skapad av: <%= task.user.email %></p>
-  <%= link_to t("tasks.index.show_link"), task %>
-    </p>
+  <h1 class="secondary-heading"><%= t("tasks.index.heading", count: @tasks.length) %></h1>
+
+  <div class="task-grid-wrapper">
+  <div class="tasks-grid">
+  <% @tasks.each do |task| %>
+    <div class="task-card">
+      <p class="task-company"><%= task.company %></p>
+      
+      <h2 class="task-title"><%= task.title %></h2> 
+      
+      <p class="task-city">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="inherit" style="flex-shrink:0">
+        <path d="M12.0001 14C14.2061 14 16.0001 12.206 16.0001 10C16.0001 7.794 14.2061 6 12.0001 6C9.79406 6 8.00006 7.794 8.00006 10C8.00006 12.206 9.79406 14 12.0001 14ZM12.0001 8C13.1031 8 14.0001 8.897 14.0001 10C14.0001 11.103 13.1031 12 12.0001 12C10.8971 12 10.0001 11.103 10.0001 10C10.0001 8.897 10.8971 8 12.0001 8Z" fill="#2B324C"></path>
+        <path d="M11.4201 21.814C11.5893 21.9349 11.7921 21.9998 12.0001 21.9998C12.2081 21.9998 12.4108 21.9349 12.5801 21.814C12.8841 21.599 20.0291 16.44 20.0001 10C20.0001 5.589 16.4111 2 12.0001 2C7.58909 2 4.00009 5.589 4.00009 9.995C3.97109 16.44 11.1161 21.599 11.4201 21.814ZM12.0001 4C15.3091 4 18.0001 6.691 18.0001 10.005C18.0211 14.443 13.6121 18.428 12.0001 19.735C10.3891 18.427 5.97909 14.441 6.00009 10C6.00009 6.691 8.69109 4 12.0001 4Z" fill="#2B324C"></path>
+        </svg>
+      
+        <%= task.city %>
+      </p>
+      
+      <!--- <p><%= task.description %></p> --->
+      
+      <p class="task-creator"><%= t("tasks.index.created_by", email: task.user.email) %></p>
+
+        
+      <% if user_signed_in? %>  
+        <div class="task-card-actions">  
+            <div>
+              <%= link_to edit_task_path(task) do %>
+              <svg class="edit-svg" viewBox="0 0 24 24" fill="none">
+                <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            <% end %>
+            </div>
+            
+
+            <div>
+              <%= form_with(url: task_path(task), method: :delete) do %>
+              <%= button_tag type: "submit", class: "delete-task-btn", onclick: "return confirm('Är du säker på att du vill radera uppdraget?');" do %>
+                <svg class="delete-svg" viewBox="0 0 1024 1024"><path fill="inherit" d="M160 256H96a32 32 0 0 1 0-64h256V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V256zm448-64v-64H416v64h192zM224 896h576V256H224v640zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32zm192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32z"/></svg>
+              <% end %>
+            <% end %>
+            </div>      
+          </div>    
+        <% end %>
+
+    </div>
   <% end %>
+
+  </div>
+
+  <%= link_to t("tasks.index.new_task"), new_task_path, class: "primary-cta" %>
 </div>
 
-<%= link_to t("tasks.index.new_task"), new_task_path %>
 
+</div>

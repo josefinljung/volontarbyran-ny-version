@@ -1,4 +1,357 @@
+@import "./variables";
+
 body {
-  background-color: rgb(244, 232, 232);
-  color: rgb(38, 6, 6);
+  background-color: white;
+  color: black;
+  font-family: Graphik Web, Helvetica Neue, Lucida Grande, sans-serif;
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    padding: 1.5rem 3rem;
+
+    #logo-menu-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem 6rem;
+
+      #header-logo {
+        height: 1.5rem;
+      }
+    }
+
+    #header-menu {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-cta-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    #login-icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 2.5rem;
+      min-width: 2.5rem;
+      background-color: $secondary-color;
+      color: white;
+    }
+  }
+
+  #home-tasks-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 94px);
+    text-align: center;
+    text-transform: uppercase;
+
+    #home-tasks-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      background-color: $secondary-color;
+
+      a {
+        color: white;
+        text-transform: uppercase;
+        font-size: 18px;
+        line-height: 1;
+
+        &:hover {
+          text-decoration: underline;
+          text-underline-position: under;
+        }
+      }
+    }
+  }
+  .task-grid-wrapper {
+    padding: 0 1rem;
+
+    .tasks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding: 1rem 0;
+
+      .task-card {
+        background-color: white;
+        padding: 1.5rem;
+        box-shadow: 0 2px 5px #00000040;
+        transition: all 0.3s ease;
+
+        &:hover {
+          box-shadow: 0 2px 5px 3px #00000040;
+          transform: scale(1.01);
+        }
+
+        .task-title {
+          margin: 0;
+          color: $secondary-color;
+          text-transform: uppercase;
+        }
+
+        .task-company {
+          margin: 0 0 0.5rem 0;
+          font-size: 0.875rem;
+          font-weight: 700;
+        }
+
+        .task-city {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 1.5rem 0 0 0;
+          margin: 0;
+        }
+
+        .task-creator {
+          font-size: 0.875rem;
+          font-weight: 500;
+        }
+
+        .task-card-actions {
+          display: flex;
+          gap: 1rem;
+
+          .delete-task-btn {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .create-tasks-form-container {
+    form {
+      display: grid;
+      gap: 1.5rem;
+      padding: 1rem;
+      margin: 2rem 0;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.5rem 0.25rem;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 0.5rem 0.25rem;
+        min-height: 8rem;
+      }
+    }
+  }
+
+  .heading-form-container,
+  .heading-form-container {
+    display: grid;
+    max-width: 892px;
+    padding-block: 4.5rem;
+    padding-inline: 0.875rem;
+    margin-inline: auto;
+    text-align: center;
+
+    hgroup {
+      display: grid;
+
+      h1 {
+        text-transform: uppercase;
+        font-size: 2.625rem;
+        text-align: center;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+      }
+
+      h2 {
+        margin: 0;
+        font-weight: 400;
+        font-size: 1.25rem;
+      }
+    }
+
+    form {
+      padding: 3.625rem 0 0 0;
+
+      .login-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-block: 1.625rem;
+
+        a {
+          margin: 0;
+        }
+
+        .action-title {
+          width: -webkit-fill-available;
+          margin: 0;
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .signup-actions,
+    .send-password-actions {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  // reused classes
+  form {
+    display: grid;
+    gap: 1.5rem;
+
+    .field {
+      text-align: start;
+    }
+
+    label {
+      margin: 0 0 1rem 1.5rem;
+      font-weight: 500;
+      font-size: 1.125rem;
+    }
+
+    input:not([type="submit"]) {
+      display: block;
+      width: -webkit-fill-available;
+      padding: 1rem 0.75rem 1rem 1.5rem;
+      margin: 0.25rem 0;
+      background-color: #fff;
+      border: 1px solid #666666;
+      border-radius: 50px;
+      font-size: 1.125rem;
+    }
+
+    em {
+      margin-left: 1.5rem;
+      // display: block;
+    }
+  }
+
+  .container {
+    padding: 1rem 1rem 4.5rem 1rem;
+  }
+
+  .primary-heading {
+    text-transform: uppercase;
+    font-size: 2.625rem;
+    text-align: center;
+    padding: 3rem 0;
+    margin: 0;
+  }
+
+  .secondary-heading {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 3rem 0;
+    margin: 0;
+  }
+
+  hgroup {
+    display: grid;
+    text-align: center;
+
+    h1 {
+      text-transform: uppercase;
+      font-size: 2.625rem;
+      text-align: center;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-weight: 400;
+      font-size: 1.25rem;
+    }
+  }
+
+  .delete-svg,
+  .edit-svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .primary-background {
+    background-color: $primary-color;
+  }
+
+  .bold-link {
+    font-weight: 700;
+    color: $secondary-color;
+    font-size: 1.125rem;
+  }
+
+  .primary-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.75rem 1.5rem;
+    // margin: 2rem auto;
+    background-color: $secondary-color;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-position: under;
+    }
+  }
+
+  .cta-vertical-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .cta-horizontal-wrapper {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
 }

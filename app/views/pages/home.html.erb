@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="primary-background" id="home-tasks-container">
+  <% if @task_count == 0 %>
+    <h1>Just nu finns det inga uppdrag.</h1>
+  <% else %>
+    <h1>Just nu finns det <%= @task_count %> uppdrag</h1>
+    <p id="home-tasks-link"><%= link_to "Se alla våra uppdrag", tasks_path %></p>
+  <% end %>
+</div>

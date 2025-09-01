@@ -1,12 +1,11 @@
 <% content_for :title, "#{ApplicationHelper::BRAND_NAME} | #{t('tasks.new.page_title')}" %>
 
-
-<h1><%= t("tasks.new.heading") %></h1>
-
-<%= render "form", task: @task %>
-
-<br>
-
-<div>
-  <%= link_to t("tasks.new.back_link"), tasks_path %>
+<div class="primary-background container">
+  <hgroup>
+    <h1 class="secondary-heading"><%= t("tasks.new.new_task") %></h1>
+    <h2>Här kan du skapa ett konto på Volontärbyrån. Med ett konto kan du spara och söka uppdrag som volontär eller lägga upp uppdrag åt din organisation. </h2>
+  </hgroup>
+  <div class="create-tasks-form-container">
+    <%= render "form", task: @task %>
+  </div>
 </div>

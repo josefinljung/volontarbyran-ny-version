@@ -5,7 +5,7 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @pagy, @tasks = pagy(Task.all)
   end
 
   # GET /tasks/1
@@ -61,4 +61,5 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find_by(id: params[:id])
     redirect_to tasks_path, notice: "Not authorized to edit this task" if @task.nil?
   end
+
 end

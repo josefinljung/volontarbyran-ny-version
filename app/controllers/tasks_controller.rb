@@ -47,6 +47,17 @@ class TasksController < ApplicationController
     redirect_to tasks_url, notice: t("tasks.destroy.success")
   end
 
+  # email registration for task
+  def register
+    @task = Task.find(params[:id])
+    if user_signed_in?
+      UserMailer.with(task: @task, user: current_user).task_registration_email.deliver_now
+      redirect_to @task, notice: "Du har anmält dig till uppdraget!"
+    else
+      redirect_to @task, alert: "Du måste vara inloggad för att anmäla dig."
+    end
+  end
+
   private
 
   def set_task
@@ -61,5 +72,4 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find_by(id: params[:id])
     redirect_to tasks_path, notice: "Not authorized to edit this task" if @task.nil?
   end
-
 end

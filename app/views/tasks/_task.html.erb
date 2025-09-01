@@ -23,4 +23,8 @@
     <strong><%= t("tasks.task.created_by") %>:</strong>
     <%= task.user.email %>
   </p>
+
+  <%= form_with url: register_task_path(@task), method: :post do %>
+    <%= button_tag "Anmäl mig", class: "primary-cta" %>
+  <% end %>
 </div>

@@ -1,8 +1,10 @@
-# config/routes.rb
-
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|sv/ do
-    resources :tasks
+    resources :tasks do
+      member do
+        post 'register'
+      end
+    end
 
     devise_for :users
 

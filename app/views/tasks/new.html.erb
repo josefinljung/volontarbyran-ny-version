@@ -1,11 +1,12 @@
-<% content_for :title,  ApplicationHelper::BRAND_NAME + " | New task" %>
+<% content_for :title, "#{ApplicationHelper::BRAND_NAME} | #{t('tasks.new.page_title')}" %>
 
-<h1>New task</h1>
+
+<h1><%= t("tasks.new.heading") %></h1>
 
 <%= render "form", task: @task %>
 
 <br>
 
 <div>
-  <%= link_to "Back to tasks", tasks_path %>
+  <%= link_to t("tasks.new.back_link"), tasks_path %>
 </div>

@@ -26,7 +26,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build(task_params)
 
     if @task.save
-      redirect_to @task, notice: "Task was successfully created."
+      redirect_to @task, notice: t("tasks.create.success")
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   def update
     if @task.update(task_params)
-      redirect_to @task, notice: "Task was successfully updated."
+      redirect_to @task, notice: t("tasks.update.success")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   def destroy
     @task.destroy
-    redirect_to tasks_url, notice: "Task was successfully destroyed."
+    redirect_to tasks_url, notice: t("tasks.destroy.success")
   end
 
   private

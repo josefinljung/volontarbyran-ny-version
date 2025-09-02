@@ -1,28 +1,36 @@
 <div id="<%= dom_id task %>" class="container task-wrapper">
-  <p>
-    <strong><%= t("tasks.task.title") %>:</strong>
-    <%= task.title %>
-  </p>
+  <div>
+    <span class="show-task-label"><%= t("tasks.task.title") %>:</span>
+    <span><%= task.title %></span>
+  </div>
 
-  <p>
-    <strong><%= t("tasks.task.company") %>:</strong>
+  <div>
+    <span class="show-task-label"><%= t("tasks.task.company") %>:</span>
     <%= task.company %>
-  </p>
+  </div>
 
-  <p>
-    <strong><%= t("tasks.task.city") %>:</strong>
+  <div>
+    <span class="show-task-label"><%= t("tasks.task.city") %>:</span>
     <%= task.city %>
-  </p>
+  </div>
 
-  <p>
-    <strong><%= t("tasks.task.description") %>:</strong>
+  <div>
+    <span class="show-task-label"><%= t("tasks.task.description") %>:</span>
     <%= task.description %>
-  </p>
+  </div>
 
-  <p>
-    <strong><%= t("tasks.task.created_by") %>:</strong>
+  <div>
+    <span class="show-task-label"><%= t("tasks.task.created_by") %>:</span>
     <%= task.user.email %>
-  </p>
+  </div>
+
+  <% if task.categories.present? %>
+    <div class="task-categories-wrapper"> 
+      <% task.categories.each do |category| %>
+        <span class="task-category-wrapper"><%= category.name %></span>
+      <% end %>
+    </div>
+  <% end %>
 
   <%= form_with url: register_task_path(@task), method: :post do %>
     <%= button_tag "Anmäl mig", class: "primary-cta" %>

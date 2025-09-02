@@ -3,14 +3,6 @@
 
   <%= render @task %>
 
-  <%# TODO: move this section %>
-  <p>
-    <strong>Kategorier:</strong>
-    <% @task.categories.each do |category| %>
-      <%= category.name %>
-    <% end %>
-  </p>
-
   <div class="cta-vertical-wrapper">
     <div class="cta-horizontal-wrapper">
       <%= link_to t("tasks.show.edit_link"), edit_task_path(@task), class: "primary-cta" %>

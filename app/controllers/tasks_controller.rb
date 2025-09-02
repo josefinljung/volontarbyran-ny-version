@@ -58,6 +58,8 @@ class TasksController < ApplicationController
     end
   end
 
+  before_action :find_or_create_category, only: [:create, :update]
+
   private
 
   def set_task
@@ -71,5 +73,18 @@ class TasksController < ApplicationController
   def correct_user
     @task = current_user.tasks.find_by(id: params[:id])
     redirect_to tasks_path, notice: "Not authorized to edit this task" if @task.nil?
+  end
+
+  def find_or_create_category
+    if params[:task][:new_category_name].present?
+      category_name = params[:task][:new_category_name]
+      category = Category.find_or_create_by(name: category_name)
+      params[:task][:category_ids] ||= []
+      params[:task][:category_ids] << category.id
+    end
+  end
+
+  def task_params
+    params.require(:task).permit(:title, :company, :city, :description, category_ids: [])
   end
 end

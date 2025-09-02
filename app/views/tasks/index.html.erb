@@ -49,7 +49,17 @@
                 </div>    
               <% end %>
           </div>
+          
           <%= link_to t("tasks.task.read_more"), task_path(task), class: "read-more-link" %>
+          
+          <% if task.categories.present? %>
+            <div class="task-category-badge"> 
+              <% task.categories.each do |category| %>
+                <span class="category-tag"><%= category.name %></span>
+              <% end %>
+            </div>
+          <% end %>
+
         </div>
       <% end %>
     </div>

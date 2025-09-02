@@ -17,7 +17,23 @@
       <%= form.label :city, "Stad" %>
       <%= form.text_field :city %>
     </div>
-    
+
+    <div>
+      <%= form.label :categories, "Befintliga kategorier" %>
+      <br>
+      <% Category.all.each do |category| %>
+        <div>
+          <%= check_box_tag "task[category_ids][]", category.id, @task.categories.include?(category), id: dom_id(category) %>
+          <%= label_tag dom_id(category), category.name %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :new_category_name, "Eller skapa en ny kategori" %>
+      <%= form.text_field :new_category_name %>
+    </div>
+      
     <div class="cta-horizontal-wrapper">
       <%= form.submit "Uppdatera uppdrag", class: "primary-cta"%>
       <%= link_to t("tasks.edit.back_link"), tasks_path, class: "primary-cta" %>

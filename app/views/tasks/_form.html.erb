@@ -34,6 +34,26 @@
     <%= form.textarea :description %>
   </div>
 
+  <div class="field">
+    <%= form.label :categories %>
+    
+    <br>
+    
+    <% Category.all.each do |category| %>
+      <div>
+        <%= check_box_tag "task[category_ids][]", category.id, @task.categories.include?(category), id: dom_id(category) %>
+        <%= label_tag dom_id(category), category.name %>
+      </div>
+    <% end %>
+  </div>
+
+  <p>eller</p>
+
+  <div class="field">
+    <%= form.label :new_category_name, "Ny kategori (frivilligt)" %>
+    <%= form.text_field :new_category_name %>
+  </div>
+
   <div>
     <%= form.submit class: "primary-cta" %>
   </div>

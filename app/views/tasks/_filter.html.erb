@@ -1,0 +1,12 @@
+<div class="filter-wrapper">
+    <%= form_with url: tasks_path, method: :get do |form| %>
+        <div class="filter-wrapper">
+
+            <div class="select-outer-wrapper">
+                <%= form.collection_select :category_id, Category.all, :id, :name, { include_blank: 'Välj en kategori' } %>
+            </div>
+            
+            <%= form.submit "Filtrera", class: "primary-cta" %>
+        </div>
+    <% end %>
+</div>

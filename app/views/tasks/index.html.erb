@@ -3,6 +3,8 @@
 <div class="primary-background container">
 
   <h1 class="secondary-heading"><%= t("tasks.index.heading", count: @pagy.count) %></h1>
+  
+  <%= render "tasks/filter" %>
 
   <div class="task-grid-wrapper">
     <div class="tasks-grid">

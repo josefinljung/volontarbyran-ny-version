@@ -1,0 +1,7 @@
+# TODO: figure out the logic way to display these links
+<div class="sorting-links">
+  <%= link_to "Äldst först", tasks_path(sort: "asc", category_ids: params[:category_ids]), class: "old-link"%>
+  <%= link_to "Nyast först", tasks_path(sort: "desc", category_ids: params[:category_ids]), class: "new-link" %>
+</div>
+
+

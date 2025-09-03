@@ -111,35 +111,65 @@ body {
     }
   }
 
-  .filter-wrapper {
-    background-color: rgb(255, 255, 255);
+  .filter-sorting-wrapper {
     display: grid;
-    margin: 1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #faebe7;
 
-    .filter-heading {
-      font-size: 1.25rem;
-      font-weight: 500;
+    .filter-sorting-heading {
+      color: $secondary-color;
+      font-weight: 600;
+      font-size: 1.125rem;
+      justify-self: center;
     }
 
-    .filter-items {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin: 1rem 0;
+    .sorting-links {
+      padding: 2rem 0 1rem 0;
 
-      .filter-item {
+      a {
+        background-color: $secondary-color;
+        color: white;
+        padding: 1rem;
+      }
+
+      .old-link::after {
+        content: "↑";
+        margin-left: 0.5rem;
+      }
+
+      .new-link::after {
+        content: "↓";
+        margin-left: 0.5rem;
+      }
+    }
+
+    .filter-wrapper {
+      .filter-heading {
+        font-weight: 500;
+      }
+
+      .filter-items {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
         gap: 1rem;
+        margin: 1rem 0;
 
-        input {
-          width: fit-content;
-        }
+        .filter-item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 1rem;
 
-        label {
-          margin: 0;
-          font-weight: 400;
+          input {
+            width: fit-content;
+          }
+
+          label {
+            margin: 0;
+            font-weight: 400;
+            font-size: 1rem;
+          }
         }
       }
     }

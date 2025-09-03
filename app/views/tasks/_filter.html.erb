@@ -1,8 +1,7 @@
 <%= form_with url: tasks_path, method: :get do %>
     <div class="filter-wrapper">
-    
-        <details class="filter-wrapper">
-            <summary class="filter-heading">Kategorier</summary>
+        <div class="filter-wrapper">
+            <p class="filter-heading">Kategorier</p>
 
             <div class="filter-items">
                 <% Category.all.each do |category| %>
@@ -14,6 +13,6 @@
             </div>
         
             <%= submit_tag "Filtrera", class: "primary-cta" %>
-            </div>
-    </details>
+        </div>
+    </div>
 <% end %>

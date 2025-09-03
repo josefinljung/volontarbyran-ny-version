@@ -4,15 +4,24 @@ class TasksController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /tasks
-    def index
-      if params[:category_ids].present?
-        @tasks = Task.joins(:categories).where(categories: { id: params[:category_ids] })
-      else
-        @tasks = Task.all
-      end
+     def index
 
-      @pagy, @tasks = pagy(@tasks, items: 10)
+    base_tasks = Task.all
+
+    if params[:category_ids].present?
+      base_tasks = base_tasks.joins(:categories).where(categories: { id: params[:category_ids] })
     end
+
+    if params[:sort] == "asc"
+      @tasks = base_tasks.order(created_at: :asc)
+    elsif params[:sort] == "desc"
+      @tasks = base_tasks.order(created_at: :desc)
+    else
+      @tasks = base_tasks.order(created_at: :desc)
+    end
+
+    @pagy, @tasks = pagy(@tasks, items: 10)
+  end
 
 
   # GET /tasks/1

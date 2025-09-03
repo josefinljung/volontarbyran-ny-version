@@ -1,12 +1,19 @@
-<div class="filter-wrapper">
-    <%= form_with url: tasks_path, method: :get do |form| %>
-        <div class="filter-wrapper">
+<%= form_with url: tasks_path, method: :get do %>
+    <div class="filter-wrapper">
+    
+        <details class="filter-wrapper">
+            <summary class="filter-heading">Kategorier</summary>
 
-            <div class="select-outer-wrapper">
-                <%= form.collection_select :category_id, Category.all, :id, :name, { include_blank: 'Välj en kategori' } %>
+            <div class="filter-items">
+                <% Category.all.each do |category| %>
+                    <div class="filter-item">
+                    <%= check_box_tag "category_ids[]", category.id, params[:category_ids]&.include?(category.id.to_s), id: dom_id(category) %>
+                    <%= label_tag dom_id(category), category.name %>
+                    </div>
+                <% end %>
             </div>
-            
-            <%= form.submit "Filtrera", class: "primary-cta" %>
-        </div>
-    <% end %>
-</div>
+        
+            <%= submit_tag "Filtrera", class: "primary-cta" %>
+            </div>
+    </details>
+<% end %>

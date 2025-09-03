@@ -5,14 +5,14 @@ class TasksController < ApplicationController
 
   # GET /tasks
     def index
-    if params[:category_id].present?
-      @tasks = Task.joins(:categories).where(categories: { id: params[:category_id] })
-    else
-      @tasks = Task.all
-    end
+      if params[:category_ids].present?
+        @tasks = Task.joins(:categories).where(categories: { id: params[:category_ids] })
+      else
+        @tasks = Task.all
+      end
 
-    @pagy, @tasks = pagy(@tasks, items: 10)
-  end
+      @pagy, @tasks = pagy(@tasks, items: 10)
+    end
 
 
   # GET /tasks/1
